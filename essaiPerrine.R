@@ -1,18 +1,24 @@
 library(shiny)
 
 ui <- fluidPage(
-  textInput("name", "Iinqiquez votre nom :"),
+  textInput("name", "Inqiquez votre nom :"),
   textOutput("bienvenue"),
-  actionButton("go", "essayer !")
+  actionButton("action", label = "Action"),
+  
+  hr(),
+  fluidRow(column(2, verbatimTextOutput("value"))),
+
+  checkboxGroupInput("checkGroup", label=h3("Checkbox group"),
+    choices = list("Choice 1"=  1, "Choice 2" =  2, "Choice 3"= 3),
+    selected =  1),
+
+  hr(),
+  fluidRow(column(3, verbatimTextOutput("value")))
 )
 
 server <- function(input, output) {
-  output$bienvenue <- renderText({
-  re <- eventReactive(
-      input$go,{input$name})
-    
-      re()
-  })
+  output$velue <- renderPrint({input$action})
+
   
 }
   
