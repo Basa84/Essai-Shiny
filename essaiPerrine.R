@@ -1,7 +1,7 @@
 library(shiny)
 
 ui <- fluidPage(
-  textInput("name", "Inqiquez votre nom :"),
+  textInput("name", "Indiquez votre nom :"),
   textOutput("bienvenue"),
   actionButton("action", label = "Action"),
   
