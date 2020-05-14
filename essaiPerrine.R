@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 library(shiny)
 
 ui <- fluidPage(
@@ -50,3 +51,36 @@ server <- function(input, output) {
   
 >>>>>>> f859a77003a15bcc29ee97e403f0380242d3dccb
 shinyApp(ui = ui, server = server)
+=======
+library(shiny)
+
+ui <- fluidPage(
+  titlePanel("Application de Perrine"),
+  textInput("name", "Indiquez votre parcours sportif :"),
+  textOutput("bienvenue"),
+  actionButton("go", "visualisez!"),
+  mainPanel(
+    img(src="Strava.png", height = 300, width = 400)
+  )
+  
+  
+)
+
+
+server <- function(input, output) {
+  output$bienvenue <- renderText({
+  re <- eventReactive(
+      input$go,{input$name})
+   
+      re()
+  })
+  output$image <- renderPrint({
+    dataset <- get(input$img, "Strava.png")
+ 
+  })
+  
+}
+  
+shinyApp(ui = ui, server = server)
+
+>>>>>>> 081ac9bdc55da9c31262ba3a546077b29dba641a
